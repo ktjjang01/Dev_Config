@@ -1,9 +1,9 @@
-Dev_Config Files
-================
+Dev_Config
+==========
 
 List of Development Configurations File
 
 Contents
 --------
 
- *.vimrc
+ * vimrc
