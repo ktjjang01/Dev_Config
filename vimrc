@@ -4,16 +4,25 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" enable syntax highlighting
+syntax on
+
 " set Terminal color to 256 instead of 8
 if &term =~ '^\(xterm\|screen\)$' && $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 
 " color scheme
-color molokai
+color ir_black
 
-" highlights all matches
-set hlsearch
+" search
+se hls  " highlighting matches
+se is   " as typed
+se ic   " ignoring cases
+se scs  " unless capital is used
+
+" highlight current line
+se cul
 
 " undo highlighting all matches by hitting <RETURN>
 nnoremap <CR> :noh<CR><CR>
@@ -38,16 +47,10 @@ inoremap jj <ESC>
 " show line numbers
 set number
 
-" case insensitive search
-set ic
-
-" display the match for search pattern on the fly
-set incsearch
-
 " change line number color to grey
-"highlight LineNr ctermfg=darkgrey
+highlight LineNr ctermfg=darkgrey
 
-" highlights text that goes over 80 characters
+" highlights text that goes over 85 characters
 highlight ColorColumn ctermbg=red
-call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('ColorColumn', '\%86v', 100)
 
