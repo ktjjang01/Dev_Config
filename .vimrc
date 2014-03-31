@@ -54,14 +54,31 @@ set number
 highlight LineNr ctermfg=darkgrey
 
 " highlights text that goes over 85 characters
-highlight ColorColumn ctermbg=red
+highlight ColorColumn ctermbg=darkgrey
 call matchadd('ColorColumn', '\%86v', 100)
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " enable mouse if available
-if has("mouse")
-    set mouse=a
-endif
+"if has("mouse")
+"    set mouse=a
+"endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " shows tabs and trailing spaces
+" TODO: this is barely visible in gvim monokai color scheme
 set list
 set listchars=tab:>-,trail:-
+
+" F5 to remove all trailing white spaces
+:nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" gvim env setup 
+" TODO: set a toggle for toolbar/menu button
+if has('gui_running')
+    set guioptions-=T " no toolbar
+    set guioptions-=m " no menu
+    set guioptions-=r " no right-hand scroll bar 
+    set guioptions-=L " no left-hand scroll bar 
+    color monokai     " monokai.vim should be availble in .vim/colors/
+    set lines=64
+endif
